@@ -11,19 +11,28 @@ void setup(){
   size(500, 500); 
   
   for(int i = 0; i<10; i++){
-    xPos[i] = size/2 + i; 
-    bgColor[i] = color(random(0,255), random(0, 255), random(0, 255)); 
+    xPos[i] = size/2; 
+    bgColor[i] = color(random(0,255), random(0, 255), random(0, 255));
   }
+  background(255);
 }
 
 void draw(){
+  //for(int i = 0; i<10; i++){
+  //  float dist = dist(mouseX, mouseY, xPos[i], height/2);
+  //}
   
+  for(int i = 0; i<10; i++){
+    xPos[i] = size * i+size/2;
+    ellipse(xPos[i], height/2, size, size); 
+  }
+}
+
+void mousePressed(){
   for(int i = 0; i<10; i++){
     float dist = dist(mouseX, mouseY, xPos[i], height/2);
-  }
-  
-  for(int i = 0; i<10; i++){
-    background(bgColor[i]); 
-    ellipse(xPos[i], height/2, size, size); 
+    if(dist<=size/2){
+      background(bgColor[i]);
+    }
   }
 }
